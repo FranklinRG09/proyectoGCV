@@ -6,19 +6,19 @@
   box-sizing: border-box; /* para que el padding no agregue scroll horizontal */
   width: 100%; /* ocupar todo el ancho */
   display: flex; /* Convierte el contenedor en un flex container */
-  gap: 80px;     /* Crea un espacio entre los componentes de 24px */
+  gap: 78px;     /* Crea un espacio entre los componentes*/
 }
 
 app-ver-turnos {
-  flex-basis: 26%;
+  flex-basis: 23%;
 }
 
 app-solicitar-turno {
-  flex-basis: 41%;
+  flex-basis: 42%;
 }
 
 app-siguientes-turnos {
-  flex-basis: 22%;
+  flex-basis: 23%;
 }
 
 .card-help {
