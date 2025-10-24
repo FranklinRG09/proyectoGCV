@@ -1,0 +1,29 @@
+/* Fondo de la página inicio */
+.page-inicio {
+  background-color: #E9EAEA; /* gris oscuro distinto al toolbar */
+  padding: 16px; /* espacio alrededor */
+  min-height: calc(100vh - 135px); /* altura total menos toolbar */
+  box-sizing: border-box; /* para que el padding no agregue scroll horizontal */
+  width: 100%; /* ocupar todo el ancho */
+  display: flex; /* Convierte el contenedor en un flex container */
+  gap: 80px;     /* Crea un espacio entre los componentes de 24px */
+}
+
+app-ver-turnos {
+  flex-basis: 26%;
+}
+
+app-solicitar-turno {
+  flex-basis: 41%;
+}
+
+app-siguientes-turnos {
+  flex-basis: 22%;
+}
+
+.card-help {
+  color: white;
+  text-align: center;
+  background-color: #f97e55;
+  padding: 28px;
+}

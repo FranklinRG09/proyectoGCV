@@ -1,0 +1,106 @@
+.card-principal {
+  width: 100%; 
+  height: 48%;
+  background-color: #f7f7f7;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-secondary {
+  width: 100%; 
+  height: 15%;
+  background-color: #f7f7f7;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 22px;
+
+}
+
+.icono-container {
+  margin-top: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Iconos grandes */
+.icon-large {
+  margin-left: 3%;
+  scale: 2.5;
+}
+
+.titulo {
+  margin-left: 2%;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.minutos {
+  font-size: 48px;
+  font-weight: 700;
+  color: #f97e55;
+  margin-left: 65%;
+  margin-right: 2%;
+}
+
+.boton-style {
+  margin-left: 2%;
+  margin-right: 8px;
+  font-size: 20px;
+  padding: 14px 62px;
+  border-radius: 24px;
+  transition: background-color 0.8s, color 0.8s;
+  background-color: #f97e55 !important;
+  color: white !important;
+}
+
+/* Inputs personalizados */
+.custom-input {
+  margin-left: 2%;
+  width: 96%;
+}
+
+.camp-label {
+  margin-left: 2%;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.text-label {
+  color: #888888;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.boton-accion {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.botones-styles {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-style {
+  margin-right: 8px;
+  font-size: 18px;
+  padding: 14px 22px;
+  border-radius: 24px;
+}
+
+/* Pleca separadora */
+.separador {
+  width: 1px;
+  height: 32px;
+  background-color: #636161;
+}
+
+.mat-form-field{
+  border-radius: 16px;
+}

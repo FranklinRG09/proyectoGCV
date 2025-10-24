@@ -1,0 +1,53 @@
+.card-principal {
+  width: 100%;
+  height: 91%;
+  background-color: #f7f7f7;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Iconos grandes */
+.icon-large {
+  scale: 2;
+}
+
+.siguientes-turnos {
+  display: flex;
+  flex-direction: column; /* apilados verticalmente */
+  gap: 12px; /* separación entre cards */
+  margin-top: 20px;
+}
+
+.turno-card {
+  height: 78px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E9EAEA; /* gris */
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 8px;
+}
+
+.esperando-turno {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background-color: #d0f0e0; /* verde claro suave */
+  padding: 24px 34px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.esperando-texto {
+  margin-left: 35px;
+  font-size: 22px;
+  font-weight: 700;
+}

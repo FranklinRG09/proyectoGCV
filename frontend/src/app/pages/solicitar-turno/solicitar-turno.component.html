@@ -1,0 +1,39 @@
+<mat-card-content class="card-principal">
+  <label class="camp-label">Nombre</label>
+  <mat-form-field appearance="outline" class="custom-input">
+    <mat-label class="text-label">Ingresa tu nombre completo</mat-label>
+    <input matInput>
+  </mat-form-field>
+
+  <label class="camp-label">Documento</label>
+  <mat-form-field appearance="outline" class="custom-input">
+    <mat-label class="text-label">Ingresa tu número de documento</mat-label>
+    <input matInput>
+  </mat-form-field>
+
+  <label class="camp-label">Motivo de visita</label>
+  <mat-form-field appearance="outline" class="custom-input">
+    <mat-label class="text-label">Seleccione el motivo de su visita</mat-label>
+    <mat-select>
+      <mat-option value="one">Motivo uno</mat-option>
+      <mat-option value="two">Motivo dos</mat-option>
+      <mat-option value="three">Motivo tres</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="boton-accion">
+    <button mat-flat-button class="boton-style">Solicitar turno</button>
+    <div class="botones-styles">
+      <button mat-button class="btn-style">Ver turno</button>
+      <span class="separador"></span>
+      <button mat-button class="btn-style">Editar turno</button>
+    </div>
+  </div>
+</mat-card-content>
+
+<mat-card-content class="card-secondary">
+  <span class="titulo">Tiempo de espera promedio:</span>
+    <div class="icono-container">
+    <mat-icon class="icon-large">timer</mat-icon>
+    <span class="minutos">15 min</span>
+    </div>
+</mat-card-content>
