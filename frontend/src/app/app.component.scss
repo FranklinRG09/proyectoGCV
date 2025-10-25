@@ -1,0 +1,56 @@
+/* Toolbar con fondo gris claro */
+.fixed-toolbar {
+  background-color: #F7F7F7 !important;
+  padding: 0 16px; // espacio horizontal
+  height: 72px; // altura del toolbar
+
+  .toolbar-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(38, 37, 37);
+  }
+}
+
+/* Espaciador */
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+/* Contenedor de enlaces */
+.toolbar-links {
+  display: flex;
+  flex: 1.5; /* ocupa todo el espacio disponible */
+  gap: 18px; /* separación entre botones */
+}
+
+/* Botones de navegación */
+.boton-nav {
+  margin-right: 8px;
+  font-size: 18px;
+  padding: 12px 24px;
+  color: black !important;
+  border-radius: 24px;
+
+  &:hover {
+    background-color: rgba(104, 217, 166, 0.5);
+    color:white !important;
+  }
+
+}
+
+/* Botón activo (página actual) */
+.boton-nav.active-link {
+  background-color: #4bab80;
+  color:white !important;
+}
+
+/* Botón iniciar sesión */
+.boton-sesion {
+  margin-right: 8px;
+  font-size: 18px;
+  padding: 12px 24px;
+  border-radius: 24px;
+  transition: background-color 0.8s, color 0.8s;
+  background-color: #f97e55 !important;
+  color: white !important;
+}

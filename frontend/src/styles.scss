@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@use "./app/themes/green-theme.css";
+
+html, body {
+  font-size: 17px;
+  margin: 0;
+  overflow: hidden; /* evita que se genere scroll dentro */
+}
+
+/* Botones planos, raised, stroked, icon-button con mat-button */
+button.mat-button,
+button.mat-raised-button,
+button.mat-stroked-button,
+button.mat-flat-button {
+  background-color: #FF784B !important; /* fondo naranja */
+  color: white !important;               /* texto blanco */
+}
+
+/* Hover */
+button.mat-button:hover,
+button.mat-raised-button:hover,
+button.mat-stroked-button:hover,
+button.mat-flat-button:hover {
+  background-color: #e76b40 !important;  /* naranja más oscuro al pasar el mouse */
+}
+
+/* Iconos */
+.mat-icon {
+  color: #4bab80 !important; 
+}
