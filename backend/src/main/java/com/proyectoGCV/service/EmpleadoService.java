@@ -33,12 +33,13 @@ public class EmpleadoService {
 
     public Empleado actualizarEmpleado(Long id, Empleado empleado) {
         Empleado e = empleadoRepository.findById(id).orElseThrow(() -> new RuntimeException("Empleado no encontrado"));
-        e.setCargo(empleado.getCargo());
-        e.setEstado(empleado.getEstado());
         e.setRol(empleado.getRol());
+        e.setNombre(empleado.getNombre());
+        e.setApellido(empleado.getApellido());
+        e.setDocumento(empleado.getDocumento());
         e.setEmail(empleado.getEmail());
         e.setContrasena(empleado.getContrasena());
-        e.setServicioAsignado(empleado.getServicioAsignado());
+
         return empleadoRepository.save(e);
     }
 

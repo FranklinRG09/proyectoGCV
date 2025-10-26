@@ -1,0 +1,39 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { Turno } from '../models/turno.model';
+
+@Injectable({ providedIn: 'root' })
+export class TurnosService {
+
+  private apiUrl = 'http://localhost:8080/api/turnos';
+
+  private turnosActualizados = new BehaviorSubject<void>(undefined);
+  turnosActualizados$ = this.turnosActualizados.asObservable();
+
+  constructor(private http: HttpClient) {}
+
+  obtenerTurnosPorEstado(estado: string): Observable<Turno[]> {
+    return this.http.get<Turno[]>(`${this.apiUrl}?estado=${estado}`);
+  }
+
+  crearTurno(turno: Turno): Observable<Turno> {
+    return this.http.post<Turno>(this.apiUrl, turno);
+  }
+
+  buscarPorDocumento(documento: string): Observable<Turno | null> {
+      return this.http.get<Turno | null>(`${this.apiUrl}/buscar?documento=${documento}`);
+  }
+
+  editarPorDocumento(documento: string, datos: Turno): Observable<Turno | null> {
+      return this.http.put<Turno | null>(`${this.apiUrl}/editar?documento=${documento}`, datos);
+  }
+
+  eliminarTurno(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  notificarCambio() {
+    this.turnosActualizados.next();
+  }
+}

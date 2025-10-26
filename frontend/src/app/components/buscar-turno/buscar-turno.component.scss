@@ -1,0 +1,70 @@
+.ver-turno-card {
+  width: 460px;
+  padding: 24px;
+  border-radius: 12px;
+  background: #faf8f8;
+}
+
+.titulo-card {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+.campo-busqueda {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.input-documento {
+  flex: 1;
+}
+
+.btn-buscar {
+  height: 56px;
+  align-self: center;
+}
+
+.mensaje-error {
+  color: #d3582f;
+  font-weight: 500;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.detalle-turno {
+  background-color: #f9f9f9;
+  padding: 16px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.detalle-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.detalle-item:last-child {
+  border-bottom: none;
+}
+
+.detalle-item label {
+  font-weight: 500;
+  color: #555;
+}
+
+.detalle-item span {
+  color: #333;
+  font-weight: 600;
+}
+
+.botones-estilo {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
