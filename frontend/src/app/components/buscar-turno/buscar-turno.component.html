@@ -1,0 +1,35 @@
+<mat-card class="ver-turno-card">
+  <mat-card-title class="titulo-card">Buscar Turno</mat-card-title>
+  <mat-card-content>
+    <!-- Campo Documento -->
+    <div class="campo-busqueda">
+      <mat-form-field appearance="outline" class="input-documento">
+        <mat-label>Documento</mat-label>
+        <input
+          matInput
+          [(ngModel)]="documento"
+          (keydown.enter)="buscarTurno()"
+          placeholder="Ingrese el número de documento"
+        />
+      </mat-form-field>
+    </div>
+
+    <!-- Mensaje de error -->
+    <div class="mensaje-error" *ngIf="mensajeError">{{ mensajeError }}</div>
+
+    <!-- Detalle del turno -->
+    <div *ngIf="turno" class="detalle-turno">
+      <div class="detalle-item"><label>Turno:</label> <span>{{ turno.id }}</span></div>
+      <div class="detalle-item"><label>Nombres:</label> <span>{{ turno.nombres }}</span></div>
+      <div class="detalle-item"><label>Apellidos:</label> <span>{{ turno.apellidos }}</span></div>
+      <div class="detalle-item"><label>Documento:</label> <span>{{ turno.documento }}</span></div>
+      <div class="detalle-item"><label>Motivo:</label> <span>{{ turno.motivo }}</span></div>
+    </div>
+
+    <!-- Botones -->
+    <div class="botones-estilo">
+      <button mat-flat-button color="primary" (click)="buscarTurno()">Aceptar</button>
+      <button mat-stroked-button color="warn" (click)="cerrar()">Cerrar</button>
+    </div>
+  </mat-card-content>
+</mat-card>

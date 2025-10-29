@@ -1,0 +1,61 @@
+<mat-card class="ver-turno-card">
+  <mat-card-title class="titulo-card">Editar Turno</mat-card-title>
+  <mat-card-content>
+    
+    <!-- Campo documento y botón buscar -->
+    <div class="buscar-documento">
+      <mat-form-field appearance="outline" class="input-documento">
+        <mat-label>Documento</mat-label>
+        <input matInput [(ngModel)]="documento" placeholder="Ingrese el número de documento" />
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="buscarTurno()">Buscar
+      </button>
+    </div>
+
+    <!-- Mensaje de error -->
+    <div class="mensaje-error" *ngIf="mensajeError">{{ mensajeError }}</div>
+
+    <!-- Formulario de edición -->
+    <form [formGroup]="turnoForm" *ngIf="turno">
+      <label class="camp-label">Nombres</label>
+      <mat-form-field appearance="outline" class="custom-input">
+        <mat-label>Ingrese nombres</mat-label>
+        <input matInput formControlName="nombres">
+      </mat-form-field>
+
+      <label class="camp-label">Apellidos</label>
+      <mat-form-field appearance="outline" class="custom-input">
+        <mat-label>Ingrese apellidos</mat-label>
+        <input matInput formControlName="apellidos">
+      </mat-form-field>
+
+      <label class="camp-label">Documento</label>
+      <mat-form-field appearance="outline" class="custom-input">
+        <mat-label>Documento</mat-label>
+        <input matInput formControlName="documento">
+      </mat-form-field>
+
+      <label class="camp-label">Motivo</label>
+      <mat-form-field appearance="outline" class="custom-input">
+        <mat-label>Motivo</mat-label>
+        <mat-select formControlName="motivo">
+          <mat-option value="CAJA">Caja</mat-option>
+          <mat-option value="CONSULTORIA">Consultorio</mat-option>
+          <mat-option value="DESPACHO">Despacho</mat-option>
+          <mat-option value="ENTREGA">Entrega</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+
+        <!-- Mensaje de éxito -->
+    <div *ngIf="exito" class="mensaje-exito">
+      Turno actualizado con éxito!
+    </div>
+
+    <div class="botones-estilo">
+      <button mat-flat-button color="primary" (click)="actualizarTurno()" [disabled]="!turno">Actualizar</button>
+      <button mat-stroked-button color="warn" (click)="cerrar()">Cancelar</button>
+    </div>
+
+  </mat-card-content>
+</mat-card>

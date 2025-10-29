@@ -2,26 +2,18 @@
   <!-- Apartado visual personas esperando -->
   <div class="esperando-turno">
     <mat-icon class="icon-large">group</mat-icon>
-    <span class="esperando-texto">Personas esperando: 5</span>
+    <span class="esperando-texto">Personas esperando: {{ personasEsperando }}</span>
   </div>
 
   <p>Siguientes turnos:</p>
 
   <div class="siguientes-turnos">
-    <mat-card class="turno-card">
-      <mat-card-content>A06 - Elena Martínez Ruiz</mat-card-content>
-    </mat-card>
-    <mat-card class="turno-card">
-      <mat-card-content>A07 - Jorge Hernández López</mat-card-content>
-    </mat-card>
-    <mat-card class="turno-card">
-      <mat-card-content>A08 - Patricia Gómez Salinas</mat-card-content>
-    </mat-card>
-    <mat-card class="turno-card">
-      <mat-card-content>A09 - Ricardo Torres Ramírez</mat-card-content>
-    </mat-card>
-    <mat-card class="turno-card">
-      <mat-card-content>A10 - Laura Fernández Morales</mat-card-content>
-    </mat-card>
+    <ng-container *ngFor="let turno of siguientesTurnos">
+      <mat-card class="turno-card">
+        <mat-card-content>
+          {{ turno.id | number:'2.0' }} - {{ turno.nombres }} {{ turno.apellidos }}
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
   </div>
 </mat-card-content>

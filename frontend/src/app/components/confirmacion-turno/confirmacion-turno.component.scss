@@ -1,0 +1,32 @@
+.ticket-card {
+  width: 400px;
+  padding: 32px 24px;  /* más padding interno */
+  background: #faf8f8;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.ticket-header{
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 55px;
+}
+
+.numero-turno {
+  font-size: 72px;
+  font-weight: 800;
+  color: #f97e55;
+  margin-bottom: 50px;
+}
+
+.ticket-info{
+  font-size: 19px;
+}
+
+.acciones-ticket {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
