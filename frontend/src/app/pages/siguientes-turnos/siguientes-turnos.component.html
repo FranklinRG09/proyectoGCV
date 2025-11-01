@@ -1,19 +1,67 @@
-<mat-card-content class="card-principal">
-  <!-- Apartado visual personas esperando -->
-  <div class="esperando-turno">
-    <mat-icon class="icon-large">group</mat-icon>
-    <span class="esperando-texto">Personas esperando: {{ personasEsperando }}</span>
+<mat-card-content
+  class="flex flex-col justify-between h-[86vh] bg-[#F7F7F7] p-6 rounded-2xl shadow-md box-border overflow-hidden"
+>
+  <!-- Cabecera: personas esperando (más compacta) -->
+  <div
+    class="flex flex-col items-center justify-center bg-emerald-100 rounded-2xl py-6 mb-6 font-semibold text-gray-700 shadow-inner flex-shrink-0"
+  >
+    <div class="flex items-center justify-center gap-4 mb-1">
+      <mat-icon class="scale-125 text-emerald-700">group</mat-icon>
+      <span class="text-xl font-bold">Personas esperando</span>
+    </div>
+    <span class="text-3xl font-extrabold text-emerald-800">
+      {{ personasEsperando }}
+    </span>
   </div>
 
-  <p>Siguientes turnos:</p>
+  <!-- Título -->
+  <p class="text-gray-800 font-extrabold text-center mb-4 text-2xl flex-shrink-0">
+    Siguientes turnos:
+  </p>
 
-  <div class="siguientes-turnos">
-    <ng-container *ngFor="let turno of siguientesTurnos">
-      <mat-card class="turno-card">
-        <mat-card-content>
-          {{ turno.id | number:'2.0' }} - {{ turno.nombres }} {{ turno.apellidos }}
-        </mat-card-content>
+  <!-- Lista de turnos -->
+  <div class="flex flex-col flex-grow justify-start gap-4 overflow-y-auto pb-4">
+    <ng-container *ngFor="let turno of turnosPaginados">
+      <mat-card
+        class="bg-[#E9EAEA] font-bold text-lg text-gray-900 text-center py-5 rounded-xl shadow-sm flex-shrink-0"
+      >
+        {{ turno.id | number:'2.0' }} - {{ turno.nombres }} {{ turno.apellidos }}
       </mat-card>
     </ng-container>
+
+    <!-- Si no hay turnos -->
+    <mat-card
+      *ngIf="turnosPaginados.length === 0"
+      class="bg-[#E9EAEA] text-gray-500 italic text-center py-5 rounded-xl shadow-sm flex-shrink-0"
+    >
+      No hay turnos disponibles
+    </mat-card>
+  </div>
+
+  <!-- Paginador -->
+  <div
+    class="flex justify-center items-center gap-6 mt-4 flex-shrink-0 border-t border-gray-200 pt-4"
+  >
+    <button
+      mat-raised-button
+      (click)="paginaAnterior()"
+      [disabled]="paginaActual === 1"
+      class="bg-[#4bab80] hover:bg-emerald-800 text-white px-6 py-2 rounded-lg font-semibold disabled:opacity-50"
+    >
+      Anterior
+    </button>
+
+    <span class="text-gray-700 font-semibold text-lg">
+      Página {{ paginaActual }}
+    </span>
+
+    <button
+      mat-raised-button
+      (click)="siguientePagina()"
+      [disabled]="paginaActual * turnosPorPagina >= siguientesTurnos.length"
+      class="bg-[#4bab80] hover:bg-emerald-800 text-white px-6 py-2 rounded-lg font-semibold disabled:opacity-50"
+    >
+      Siguiente
+    </button>
   </div>
 </mat-card-content>

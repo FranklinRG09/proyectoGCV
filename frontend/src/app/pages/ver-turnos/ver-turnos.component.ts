@@ -9,11 +9,9 @@ import { Subscription } from 'rxjs';
   selector: 'app-ver-turnos',
   standalone: true,
   imports: [CommonModule, MatCardModule],
-  templateUrl: './ver-turnos.component.html',
-  styleUrls: ['./ver-turnos.component.scss']
+  templateUrl: './ver-turnos.component.html'
 })
 export class VerTurnosComponent implements OnInit, OnDestroy {
-
   turnosLlamados: Turno[] = [];
   maxTurnos = 6;
   private sub!: Subscription;
@@ -22,11 +20,7 @@ export class VerTurnosComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.cargarTurnos();
-
-    // 👇 Escucha los cambios en tiempo real desde el servicio
-    this.sub = this.turnosService.turnosActualizados$.subscribe(() => {
-      this.cargarTurnos();
-    });
+    this.sub = this.turnosService.turnosActualizados$.subscribe(() => this.cargarTurnos());
   }
 
   ngOnDestroy(): void {

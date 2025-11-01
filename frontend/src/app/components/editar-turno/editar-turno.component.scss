@@ -1,58 +1,12 @@
-.ver-turno-card {
-  width: 500px;
-  padding: 25px;
-  border-radius: 10px;
-  background: #faf8f8;
+.boton-turno {
+  margin-right: 8px;
+  font-size: 18px;
+  padding: 12px 24px;
 }
 
-.titulo-card {
-  margin-bottom: 20px;
-  font-size: 22px;
-  font-weight: 600;
-  text-align: center;
-}
-
-.input-documento {
-  padding-top: 10px;
-  width: 70%;
-}
-
-.buscar-documento {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  margin-bottom: 15px;
-}
-
-.mensaje-error {
-  text-align: center;
-  color: #d3582f;
-  font-weight: 500;
-  margin-bottom: 10px;
-  margin-left: 10px;
-
-}
-
-.mensaje-exito {
-  color: #3a9258;
-  font-weight: 600;
-  margin-top: 10px;
-}
-
-.custom-input {
-  width: 100%;
-  margin-bottom: 12px;
-}
-
-.camp-label {
-  margin-left: 2%;
-  margin-bottom: 14px;
-  display: block;
-}
-  
-.botones-estilo {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 20px;
+/* Mantiene consistencia visual en botones */
+button[mat-flat-button],
+button[mat-stroked-button] {
+  font-size: 16px;
+  text-transform: none;
 }

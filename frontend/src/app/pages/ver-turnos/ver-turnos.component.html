@@ -1,11 +1,38 @@
-<mat-card-content class="card-principal">
-  <p>Turnos llamados:</p>
+<mat-card-content
+  class="flex flex-col justify-between h-[86vh] bg-[#F7F7F7] p-6 rounded-2xl shadow-md box-border overflow-hidden"
+>
+  <!-- Título -->
+  <p class="text-gray-800 font-extrabold text-center mb-4 text-2xl flex-shrink-0">
+    Turnos llamados:
+  </p>
 
-  <ng-container *ngFor="let turno of turnosLlamados; let i = index">
-    <mat-card [ngClass]="esUltimo(turno) ? 'turno-one-card' : 'turno-card'">
-      <mat-card-content>
+  <!-- Lista de turnos -->
+  <div class="flex flex-col flex-grow justify-start gap-4 overflow-y-auto pb-4">
+    <ng-container *ngFor="let turno of turnosLlamados">
+      <!-- Último turno destacado -->
+      <div
+        *ngIf="esUltimo(turno); else turnoNormal"
+        class="bg-[#4bab80] text-white text-3xl font-bold py-10 min-h-[120px] rounded-xl flex justify-center items-center shadow flex-shrink-0"
+      >
         {{ turno.id | number:'2.0' }} - {{ turno.nombres }} {{ turno.apellidos }}
-      </mat-card-content>
+      </div>
+
+      <!-- Turno normal -->
+      <ng-template #turnoNormal>
+        <mat-card
+          class="bg-[#E9EAEA] text-gray-900 text-lg font-semibold py-5 rounded-xl flex justify-center items-center shadow-sm flex-shrink-0"
+        >
+          {{ turno.id | number:'2.0' }} - {{ turno.nombres }} {{ turno.apellidos }}
+        </mat-card>
+      </ng-template>
+    </ng-container>
+
+    <!-- Sin turnos -->
+    <mat-card
+      *ngIf="turnosLlamados.length === 0"
+      class="bg-[#E9EAEA] text-gray-500 italic text-center py-5 rounded-xl shadow-sm flex-shrink-0"
+    >
+      No hay turnos llamados
     </mat-card>
-  </ng-container>
+  </div>
 </mat-card-content>

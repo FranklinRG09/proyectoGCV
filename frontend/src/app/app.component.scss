@@ -5,43 +5,13 @@
   height: 72px; // altura del toolbar
 
   .toolbar-title {
-    font-size: 24px;
+    flex: 1 1 auto;
+    font-size: 28px;
     font-weight: bold;
-    color: rgb(38, 37, 37);
+    padding-left: 10px;
+    color: #1f1f1f;
+
   }
-}
-
-/* Espaciador */
-.example-spacer {
-  flex: 1 1 auto;
-}
-
-/* Contenedor de enlaces */
-.toolbar-links {
-  display: flex;
-  flex: 1.5; /* ocupa todo el espacio disponible */
-  gap: 18px; /* separación entre botones */
-}
-
-/* Botones de navegación */
-.boton-nav {
-  margin-right: 8px;
-  font-size: 18px;
-  padding: 12px 24px;
-  color: black !important;
-  border-radius: 24px;
-
-  &:hover {
-    background-color: rgba(104, 217, 166, 0.5);
-    color:white !important;
-  }
-
-}
-
-/* Botón activo (página actual) */
-.boton-nav.active-link {
-  background-color: #4bab80;
-  color:white !important;
 }
 
 /* Botón iniciar sesión */
@@ -51,6 +21,26 @@
   padding: 12px 24px;
   border-radius: 24px;
   transition: background-color 0.8s, color 0.8s;
-  background-color: #f97e55 !important;
+  background-color: #f87347 !important;
   color: white !important;
+}
+
+.icon {
+  scale: 1.3;
+}
+
+.sidenav {
+  width: 250px;
+  background-color: #4bab80;
+  border-radius: 0;
+  color: white;
+
+    mat-icon {
+      color: white !important;
+      margin-right: 12px;
+    }
+  }
+
+.main-container {
+  height: 100vh;
 }
