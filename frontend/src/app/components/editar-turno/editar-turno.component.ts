@@ -8,13 +8,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { Turno } from '../../models/turno.model';
-import { MatCard, MatCardTitle, MatCardContent } from "@angular/material/card";
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-editar-turno',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule, MatCard, MatCardTitle, MatCardContent, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule, FormsModule],
   templateUrl: './editar-turno.component.html',
   styleUrls: ['./editar-turno.component.scss']
 })
@@ -38,9 +37,12 @@ export class EditarTurnoComponent {
     private turnosService: TurnosService
   ) {
     this.turnoForm = this.fb.group({
-      nombres: new FormControl('', Validators.required),
-      apellidos: new FormControl('', Validators.required),
-      documento: new FormControl('', Validators.required),
+      nombres: new FormControl('', [Validators.required, Validators.maxLength(40)]),
+      apellidos: new FormControl('', [Validators.required, Validators.maxLength(40)]),
+      documento: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^\d{8}-\d{1}$/)
+      ]),
       motivo: new FormControl('', Validators.required)
     });
   }

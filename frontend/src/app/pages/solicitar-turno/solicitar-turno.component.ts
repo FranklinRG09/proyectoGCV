@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { TurnosService } from '../../services/turnos.service';
-import { ConfirmacionTurnoComponent} from '../../components/confirmacion-turno/confirmacion-turno.component'
+import { ConfirmacionTurnoComponent } from '../../components/confirmacion-turno/confirmacion-turno.component';
 import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -29,7 +29,6 @@ import { EditarTurnoComponent } from '../../components/editar-turno/editar-turno
   templateUrl: './solicitar-turno.component.html',
   styleUrls: ['./solicitar-turno.component.scss']
 })
-
 export class SolicitarTurnoComponent {
   turnoForm: FormGroup;
 
@@ -39,9 +38,15 @@ export class SolicitarTurnoComponent {
     private dialog: MatDialog
   ) {
     this.turnoForm = this.fb.group({
-      nombres: ['', Validators.required],
-      apellidos: ['', Validators.required],
-      documento: ['', Validators.required],
+      nombres: ['', [Validators.required, Validators.maxLength(40)]],
+      apellidos: ['', [Validators.required, Validators.maxLength(40)]],
+      documento: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/^\d{8}-\d{1}$/) // Formato DUI salvadoreño
+        ]
+      ],
       motivo: ['', Validators.required]
     });
   }
@@ -59,25 +64,18 @@ export class SolicitarTurnoComponent {
           this.turnoForm.reset();
           this.turnosService.notificarCambio();
         },
-        error: (err) => {
-          console.error('Error al crear turno:', err);
-        }
+        error: (err) => console.error('Error al crear turno:', err)
       });
+    } else {
+      this.turnoForm.markAllAsTouched();
     }
   }
 
-    buscarTurno() {
-      this.dialog.open(BuscarTurnoComponent, {
-      width: '460px'
-    });
+  buscarTurno() {
+    this.dialog.open(BuscarTurnoComponent, { width: '460px' });
   }
-   
 
   editarTurno() {
-      this.dialog.open(EditarTurnoComponent, {
-      width: '500px'
-    });
+    this.dialog.open(EditarTurnoComponent, { width: '500px' });
+  }
 }
-
-}
-

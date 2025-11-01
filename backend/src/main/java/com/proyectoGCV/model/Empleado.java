@@ -21,6 +21,7 @@ import lombok.Setter;
 @Builder
 public class Empleado {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -42,4 +43,7 @@ public class Empleado {
 
     @Column(nullable = false)
     private String contrasena;
+
+
+
 }

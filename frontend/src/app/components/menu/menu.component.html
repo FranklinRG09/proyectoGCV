@@ -1,0 +1,22 @@
+<nav class="w-full bg-[#4bab80] text-white rounded-2xl p-4">
+  <!-- Título superior -->
+  <div class="text-center mb-6">
+    <h1 class="text-2xl font-bold">proyectoGCV</h1>
+  </div>
+
+  <!-- Lista de páginas -->
+  <ul class="m-0 p-0 select-none">
+    <li
+      *ngFor="let item of menuItems"
+      [routerLink]="item.route"
+      routerLinkActive="active"
+      class="flex items-center px-4 py-3 cursor-pointer hover:bg-[#398c68] transition-all duration-200 rounded-lg mb-2"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <span class="material-icons mr-3 text-[22px]">
+        {{ item.icon }}
+      </span>
+      <span class="text-base font-medium">{{ item.label }}</span>
+    </li>
+  </ul>
+</nav>

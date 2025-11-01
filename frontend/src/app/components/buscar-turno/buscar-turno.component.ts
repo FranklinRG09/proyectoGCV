@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { TurnosService } from '../../services/turnos.service';
 import { Turno } from '../../models/turno.model';
-import { MatCard, MatCardTitle, MatCardContent } from "@angular/material/card";
-import { MatFormField, MatLabel } from "@angular/material/form-field";
+import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -13,7 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
   selector: 'app-buscar-turno',
   templateUrl: './buscar-turno.component.html',
   styleUrls: ['./buscar-turno.component.scss'],
-  imports: [MatCard, MatCardTitle, MatCardContent, MatFormField, MatLabel, CommonModule, FormsModule, MatInputModule, MatButtonModule]
+  imports: [MatCardModule, CommonModule, FormsModule, MatInputModule, MatButtonModule]
 })
 export class BuscarTurnoComponent {
   documento: string = '';

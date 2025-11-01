@@ -1,10 +1,12 @@
 @use "./app/themes/green-theme.css";
+@use "tailwindcss";
 
 html, body {
   font-size: 17px;
   margin: 0;
   overflow: hidden; /* evita que se genere scroll dentro */
 }
+
 
 /* Botones planos, raised, stroked, icon-button con mat-button */
 button.mat-button,

@@ -1,22 +1,19 @@
-
 <mat-toolbar color="primary" class="fixed-toolbar">
-   <!-- Título o logo de la aplicación -->
-  <span class="toolbar-title">Mi Aplicación</span>
+  <button mat-icon-button class="icon" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
 
-    <!-- Rellena el espacio restante para centrar los enlaces y mover el botón a la derecha -->
-  <span class="example-spacer"></span>
-  
-    <!-- Sección Central (Enlaces de navegación) -->
-  <div class="toolbar-links">
-    <button mat-button class="boton-nav" routerLink="/inicio" routerLinkActive="active-link">Inicio</button>
-    <button mat-button class="boton-nav" routerLink="servicios" routerLinkActive="active-link">Servicios</button>
-    <button mat-button class="boton-nav" routerLink="/ayuda" routerLinkActive="active-link">Ayuda</button>
-  </div>
+  <span class="toolbar-title">Gestor de Colas Virtuales</span>
 
-  <!-- Sección Derecha (Inicio de sesión) -->
   <button mat-flat-button class="boton-sesion">Iniciar Sesión</button>
 </mat-toolbar>
 
-<div class="content">
-  <router-outlet></router-outlet>
-</div>
+<mat-sidenav-container class="main-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="isSidenavOpen" class="sidenav" [autoFocus]="false">
+    <app-menu></app-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

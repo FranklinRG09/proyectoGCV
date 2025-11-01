@@ -1,61 +1,136 @@
-<mat-card class="ver-turno-card">
-  <mat-card-title class="titulo-card">Editar Turno</mat-card-title>
-  <mat-card-content>
-    
-    <!-- Campo documento y botón buscar -->
-    <div class="buscar-documento">
-      <mat-form-field appearance="outline" class="input-documento">
-        <mat-label>Documento</mat-label>
-        <input matInput [(ngModel)]="documento" placeholder="Ingrese el número de documento" />
-      </mat-form-field>
-      <button mat-flat-button color="primary" (click)="buscarTurno()">Buscar
-      </button>
+<div class="w-full max-w-3xl bg-white p-10 rounded-2xl shadow-lg text-gray-800">
+  <p class="text-center text-2xl font-bold text-gray-800 mb-8">EDITAR TURNO</p>
+
+  <!-- Campo Documento + Botón Buscar -->
+  <div class="flex flex-col sm:flex-row items-end gap-4 mb-6">
+    <div class="flex-1 w-full">
+      <label class="block text-gray-700 font-medium mb-2">Documento</label>
+      <input
+        matInput
+        [(ngModel)]="documento"
+        name="documento"
+        placeholder="Ingrese el número de documento"
+        class="w-full px-4 py-3 border border-gray-300 rounded-[46px] focus:outline-none focus:ring-2 focus:ring-orange-400 text-gray-800"
+      />
     </div>
 
-    <!-- Mensaje de error -->
-    <div class="mensaje-error" *ngIf="mensajeError">{{ mensajeError }}</div>
+    <button
+      mat-flat-button
+      class="boton-turno bg-green-700 hover:bg-green-800 text-white font-medium px-6 py-3 rounded-[46px] transition w-full sm:w-auto sm:self-end"
+      (click)="buscarTurno()"
+    >
+      Buscar
+    </button>
+  </div>
 
-    <!-- Formulario de edición -->
-    <form [formGroup]="turnoForm" *ngIf="turno">
-      <label class="camp-label">Nombres</label>
-      <mat-form-field appearance="outline" class="custom-input">
-        <mat-label>Ingrese nombres</mat-label>
-        <input matInput formControlName="nombres">
-      </mat-form-field>
+  <!-- Mensaje de error -->
+  <div *ngIf="mensajeError" class="text-[#d3582f] font-medium text-center mb-4">
+    {{ mensajeError }}
+  </div>
 
-      <label class="camp-label">Apellidos</label>
-      <mat-form-field appearance="outline" class="custom-input">
-        <mat-label>Ingrese apellidos</mat-label>
-        <input matInput formControlName="apellidos">
-      </mat-form-field>
+  <!-- Formulario de edición -->
+  <form [formGroup]="turnoForm" *ngIf="turno" class="space-y-6 text-gray-800">
 
-      <label class="camp-label">Documento</label>
-      <mat-form-field appearance="outline" class="custom-input">
-        <mat-label>Documento</mat-label>
-        <input matInput formControlName="documento">
-      </mat-form-field>
-
-      <label class="camp-label">Motivo</label>
-      <mat-form-field appearance="outline" class="custom-input">
-        <mat-label>Motivo</mat-label>
-        <mat-select formControlName="motivo">
-          <mat-option value="CAJA">Caja</mat-option>
-          <mat-option value="CONSULTORIA">Consultorio</mat-option>
-          <mat-option value="DESPACHO">Despacho</mat-option>
-          <mat-option value="ENTREGA">Entrega</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </form>
-
-        <!-- Mensaje de éxito -->
-    <div *ngIf="exito" class="mensaje-exito">
-      Turno actualizado con éxito!
+    <!-- Nombres -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-2">Nombres</label>
+      <input
+        matInput
+        formControlName="nombres"
+        placeholder="Ingrese nombres"
+        class="w-full px-4 py-3 border border-gray-300 rounded-[46px] focus:outline-none focus:ring-2 focus:ring-orange-400 text-gray-800"
+      />
+      <div class="h-1 mt-1">
+        <span *ngIf="turnoForm.get('nombres')?.touched && turnoForm.get('nombres')?.errors?.['required']" class="text-red-600 text-sm">
+          Este campo es obligatorio.
+        </span>
+        <span *ngIf="turnoForm.get('nombres')?.touched && turnoForm.get('nombres')?.errors?.['maxlength']" class="text-red-600 text-sm">
+          Máximo 40 caracteres permitidos.
+        </span>
+      </div>
     </div>
 
-    <div class="botones-estilo">
-      <button mat-flat-button color="primary" (click)="actualizarTurno()" [disabled]="!turno">Actualizar</button>
-      <button mat-stroked-button color="warn" (click)="cerrar()">Cancelar</button>
+    <!-- Apellidos -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-2">Apellidos</label>
+      <input
+        matInput
+        formControlName="apellidos"
+        placeholder="Ingrese apellidos"
+        class="w-full px-4 py-3 border border-gray-300 rounded-[46px] focus:outline-none focus:ring-2 focus:ring-orange-400 text-gray-800"
+      />
+      <div class="h-1 mt-1">
+        <span *ngIf="turnoForm.get('apellidos')?.touched && turnoForm.get('apellidos')?.errors?.['required']" class="text-red-600 text-sm">
+          Este campo es obligatorio.
+        </span>
+        <span *ngIf="turnoForm.get('apellidos')?.touched && turnoForm.get('apellidos')?.errors?.['maxlength']" class="text-red-600 text-sm">
+          Máximo 40 caracteres permitidos.
+        </span>
+      </div>
     </div>
 
-  </mat-card-content>
-</mat-card>
+    <!-- Documento -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-2">Documento</label>
+      <input
+        matInput
+        formControlName="documento"
+        placeholder="Ejemplo: 12345678-9"
+        class="w-full px-4 py-3 border border-gray-300 rounded-[46px] focus:outline-none focus:ring-2 focus:ring-orange-400 text-gray-800"
+      />
+      <div class="h-1 mt-1">
+        <span *ngIf="turnoForm.get('documento')?.touched && turnoForm.get('documento')?.errors?.['required']" class="text-red-600 text-sm">
+          Este campo es obligatorio.
+        </span>
+        <span *ngIf="turnoForm.get('documento')?.touched && turnoForm.get('documento')?.errors?.['pattern']" class="text-red-600 text-sm">
+          Formato no válido (Ej: 01234567-8).
+        </span>
+      </div>
+    </div>
+
+    <!-- Motivo -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-2">Motivo de visita</label>
+      <mat-select
+        formControlName="motivo"
+        placeholder="Seleccione el motivo"
+        class="w-full px-4 py-3 border border-gray-300 rounded-[46px] focus:outline-none focus:ring-2 focus:ring-orange-400 text-gray-800"
+      >
+        <mat-option value="CAJA">Caja</mat-option>
+        <mat-option value="CONSULTORIA">Consultoría</mat-option>
+        <mat-option value="DESPACHO">Despacho</mat-option>
+        <mat-option value="ENTREGA">Entrega</mat-option>
+      </mat-select>
+      <div class="h-1 mt-1">
+        <span *ngIf="turnoForm.get('motivo')?.touched && turnoForm.get('motivo')?.errors?.['required']" class="text-red-600 text-sm">
+          Debe seleccionar un motivo de visita.
+        </span>
+      </div>
+    </div>
+  </form>
+
+  <!-- Mensaje de éxito -->
+  <div *ngIf="exito" class="text-green-700 font-medium text-center mt-4">
+    ¡Turno actualizado con éxito!
+  </div>
+
+  <!-- Botones -->
+  <div class="flex flex-col sm:flex-row items-center justify-between mt-8 space-y-4 sm:space-y-0">
+    <button
+      mat-flat-button
+      class="boton-turno bg-green-700 hover:bg-green-800 text-white font-medium px-6 py-3 rounded-[46px] transition w-full sm:w-auto"
+      (click)="actualizarTurno()"
+      [disabled]="!turnoForm.valid"
+    >
+      Actualizar
+    </button>
+
+    <button
+      mat-stroked-button
+      class="boton-turno border border-orange-500 text-orange-600 hover:bg-orange-50 font-medium px-6 py-3 rounded-[46px] transition w-full sm:w-auto"
+      (click)="cerrar()"
+    >
+      Cancelar
+    </button>
+  </div>
+</div>
