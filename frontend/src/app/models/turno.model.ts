@@ -10,4 +10,15 @@ export interface Turno {
   documento: string;
   motivo: string;
   estado: string;
+  estadoSeleccionado?: string;
+  horaAtencion?: Date;
+  horaFin?: Date;
+}
+
+export enum TicketEstado {
+  EN_ESPERA = 'EN ESPERA',
+  EN_LLAMADA = 'EN LLAMADA',
+  EN_PROCESO = 'EN PROCESO',
+  AUSENTE = 'AUSENTE',
+  FINALIZADO = 'FINALIZADO'
 }

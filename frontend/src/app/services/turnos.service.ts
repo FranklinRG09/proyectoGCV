@@ -13,6 +13,10 @@ export class TurnosService {
 
   constructor(private http: HttpClient) {}
 
+  obtenerTodos(): Observable<Turno[]> {
+    return this.http.get<Turno[]>(this.apiUrl);
+  }
+
   obtenerTurnosPorEstado(estado: string): Observable<Turno[]> {
     return this.http.get<Turno[]>(`${this.apiUrl}?estado=${estado}`);
   }
@@ -25,8 +29,15 @@ export class TurnosService {
       return this.http.get<Turno | null>(`${this.apiUrl}/buscar?documento=${documento}`);
   }
 
-  editarPorDocumento(documento: string, datos: Turno): Observable<Turno | null> {
-      return this.http.put<Turno | null>(`${this.apiUrl}/editar?documento=${documento}`, datos);
+  editarPorDocumento(documento: string, data: Partial<Turno>): Observable<Turno> {
+    return this.http.put<Turno>(`${this.apiUrl}/editar?documento=${documento}`, data);
+  }
+
+  cambiarEstado(documento: string, nuevoEstado: string): Observable<Turno> {
+    return this.http.put<Turno>(
+      `${this.apiUrl}/cambiar-estado?documento=${documento}&nuevoEstado=${nuevoEstado}`,
+      {}
+    );
   }
 
   eliminarTurno(id: number): Observable<void> {
