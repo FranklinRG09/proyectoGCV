@@ -2,6 +2,7 @@ package com.proyectoGCV.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,10 +34,13 @@ public class TicketController {
 
     @GetMapping
     public List<Ticket> listarTurnos(@RequestParam(required = false) TicketEstado estado) {
-        return service.listarPorEstado(estado);
+        if (estado != null) {
+            return service.listarPorEstado(estado);
+        } else {
+            return service.obtenerTodos();
+        }
     }
 
-    // 🔹 Buscar turno por documento
     @GetMapping("/buscar")
     public Ticket buscarPorDocumento(@RequestParam String documento) {
         return service.buscarPorDocumento(documento);
@@ -45,5 +49,18 @@ public class TicketController {
     @PutMapping("/editar")
     public Ticket editarPorDocumento(@RequestParam String documento, @RequestBody Ticket datos) {
         return service.actualizarPorDocumento(documento, datos);
+    }
+
+    @PutMapping("/cambiar-estado")
+    public ResponseEntity<Ticket> cambiarEstado(
+            @RequestParam String documento,
+            @RequestParam String nuevoEstado) {
+
+        try {
+            Ticket ticketActualizado = service.actualizarEstado(documento, nuevoEstado);
+            return ResponseEntity.ok(ticketActualizado);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

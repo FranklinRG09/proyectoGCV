@@ -16,5 +16,6 @@ export class MenuComponent {
   menuItems = [
     { icon: 'person_add', label: 'Solicitar turno', route: '/solicitar-turno' },
     { icon: 'event_note', label: 'Ver turnos', route: '/turnos' },
+      { icon: 'admin_panel_settings', label: 'Administración', route: '/admin-turnos' }
   ];
 }

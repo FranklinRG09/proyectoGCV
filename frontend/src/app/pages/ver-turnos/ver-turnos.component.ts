@@ -28,7 +28,7 @@ export class VerTurnosComponent implements OnInit, OnDestroy {
   }
 
   cargarTurnos() {
-    this.turnosService.obtenerTurnosPorEstado('EN_ESPERA').subscribe({
+    this.turnosService.obtenerTurnosPorEstado('EN_LLAMADA').subscribe({
       next: (data) => {
         const ordenados = data.sort((a, b) => b.id - a.id);
         this.turnosLlamados = ordenados.slice(0, this.maxTurnos);

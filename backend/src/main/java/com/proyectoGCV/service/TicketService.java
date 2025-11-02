@@ -1,5 +1,8 @@
 package com.proyectoGCV.service;
+
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -16,16 +19,18 @@ public class TicketService {
         this.ticketRepository = repo;
     }
 
+    public List<Ticket> obtenerTodos() {
+        return ticketRepository.findAll();
+    }
+
     public List<Ticket> listarPorEstado(TicketEstado estado) {
         return ticketRepository.findByEstado(estado);
     }
 
-    // 🔹 Buscar por documento
     public Ticket buscarPorDocumento(String documento) {
         return ticketRepository.findByDocumento(documento).orElse(null);
     }
 
-    // 🔹 Actualizar por documento
     public Ticket actualizarPorDocumento(String documento, Ticket datos) {
         Ticket t = ticketRepository.findByDocumento(documento).orElse(null);
         if (t != null) {
@@ -48,11 +53,26 @@ public class TicketService {
         return ticketRepository.save(turno);
     }
 
-    public Ticket obtener(Long id) {
-        return ticketRepository.findById(id).orElse(null);
-    }
+    // Método para actualizar solo el estado y horas relacionadas
+    public Ticket actualizarEstado(String documento, String nuevoEstado) {
+        Optional<Ticket> optTurno = ticketRepository.findByDocumento(documento);
+        if (optTurno.isEmpty()) {
+            throw new RuntimeException("Ticket no encontrado");
+        }
 
-    public void eliminar(Long id) {
-        ticketRepository.deleteById(id);
+        Ticket turno = optTurno.get();
+
+        TicketEstado estadoEnum = TicketEstado.valueOf(nuevoEstado);
+        turno.setEstado(estadoEnum);
+
+        if (estadoEnum == TicketEstado.EN_PROCESO && turno.getHoraAtencion() == null) {
+            turno.setHoraAtencion(LocalDateTime.now());
+        }
+
+        if (estadoEnum == TicketEstado.FINALIZADO && turno.getHoraFin() == null) {
+            turno.setHoraFin(LocalDateTime.now());
+        }
+
+        return ticketRepository.save(turno);
     }
 }
