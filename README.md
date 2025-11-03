@@ -3,7 +3,7 @@
 
 ![](https://camo.githubusercontent.com/2def16885cea9901bb93321a93173c57b343b0745894fd7cd3a5fcd6f695b067/68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f323630302f312a655f474e7474614a3134665248736c665159783665412e706e67)
 
-**GestorQ** es una aplicación para gestionar colas de espera en locales de negocios, busca darle solución a la dificultad de gestionar la atención de muchos clientes mediante un gestor de colas virtual hecha en** Springboot **con** Java 17** y **Angular 19 **en la cual el cliente puede solicitar un turno el cual entrara a la cola de espera y esperara a ser llamado y en el momento en el que sea llamado por algun empleado, su nombre y numero de turno aparecera en la tabla de llamados que ven los clientes en el local.
+**GestorQ** es una aplicación para gestionar colas de espera en locales de negocios, busca darle solución a la dificultad de gestionar la atención de muchos clientes mediante un gestor de colas virtual hecha en **Springboot** con **Java 17** y **Angular 19** en la cual el cliente puede solicitar un turno el cual entrara a la cola de espera y esperara a ser llamado y en el momento en el que sea llamado por algun empleado, su nombre y numero de turno aparecera en la tabla de llamados que ven los clientes en el local.
 
 ## 1. Requisitos previos
 
