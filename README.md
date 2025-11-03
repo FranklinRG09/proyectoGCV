@@ -49,7 +49,7 @@ Hay dos archivos de variables de entorno en dos versiones, una para producción 
 	docker compose -f Docker-compose.dev.yaml up
 	```
 
-##5. Acceder a la aplicación:
+## 5. Acceder a la aplicación:
 1 Frontend: http://localhost:4200 (para poder ver el front).
 
 2 Frontend: http://localhost:4200/solicitarturno (Para generar un nuevo turno).
@@ -65,11 +65,11 @@ Hay dos archivos de variables de entorno en dos versiones, una para producción 
 
 	-Para Local
   ```bash
-docker compose -f Docker-compose.dev.yaml down
+  docker compose -f Docker-compose.dev.yaml down
   ```
   -Para Producción
     ```bash
-docker compose -f Docker-compose.prod.yaml down
+  docker compose -f Docker-compose.prod.yaml down
   ```
 
 ---
