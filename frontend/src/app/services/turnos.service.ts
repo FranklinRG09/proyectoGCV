@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Turno } from '../models/turno.model';
+import { environment } from '../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class TurnosService {
 
-  private apiUrl = 'http://localhost:8080/api/turnos';
+  private apiUrl = `${environment.apiUrl}/turnos`;
 
   private turnosActualizados = new BehaviorSubject<void>(undefined);
   turnosActualizados$ = this.turnosActualizados.asObservable();
