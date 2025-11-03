@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: ./backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${PGHOST}:5432/${PGDATABASE}
+      SPRING_DATASOURCE_USERNAME: ${PGUSER}
+      SPRING_DATASOURCE_PASSWORD: ${PGPASSWORD}
+      SPRING_DATASOURCE_SSLMODE: ${PGSSLMODE}
+    ports:
+      - "8080:8080"
+    working_dir: /app
+    command: ["java", "-jar", "app.jar"]
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
