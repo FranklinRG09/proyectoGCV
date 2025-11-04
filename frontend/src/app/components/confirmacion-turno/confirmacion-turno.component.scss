@@ -1,0 +1,39 @@
+.ticket-card {
+  width: 400px;
+  padding: 32px 24px; /* más padding interno */
+  background: #faf8f8;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.ticket-header {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 55px;
+}
+
+.numero-turno {
+  font-size: 72px;
+  font-weight: 800;
+  color: #f97e55;
+  margin-bottom: 50px;
+}
+
+.ticket-info {
+  font-size: 19px;
+  line-height: 1.8; /* más espacio entre líneas */
+  margin-bottom: 36px; /* separación con el botón */
+}
+
+.acciones-ticket {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.boton-turno {
+  margin-right: 8px;
+  font-size: 18px;
+  padding: 12px 24px;
+}

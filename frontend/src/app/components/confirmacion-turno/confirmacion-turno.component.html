@@ -1,0 +1,20 @@
+<mat-dialog-content class="ticket-card">
+  <div class="ticket-header">
+    <label>Turno Confirmado</label>
+  </div>
+
+  <div class="numero-turno">
+    {{ data.turno.id }}
+  </div>
+
+  <div class="ticket-info">
+    <p><strong>Nombre:</strong> {{ data.turno.nombres }}</p>
+    <p><strong>Apellido:</strong> {{ data.turno.apellidos }}</p>
+    <p><strong>Documento:</strong> {{ data.turno.documento }}</p>
+    <p><strong>Motivo:</strong> {{ data.turno.motivo }}</p>
+  </div>
+
+  <mat-dialog-actions align="center" class="acciones-ticket">
+    <button mat-flat-button color="primary" class="boton-turno" (click)="cerrarDialogo()">Aceptar</button>
+  </mat-dialog-actions>
+</mat-dialog-content>

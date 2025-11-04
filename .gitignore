@@ -1,2 +1,10 @@
 # Visual Studio Code
 .vscode/
+
+# Node.js
+node_modules/
+
+# .env
+.env
+.env.prod
+.env.dev

@@ -1,0 +1,12 @@
+.boton-turno {
+  margin-right: 8px;
+  font-size: 18px;
+  padding: 12px 24px;
+}
+
+/* Mantiene consistencia visual en botones */
+button[mat-flat-button],
+button[mat-stroked-button] {
+  font-size: 16px;
+  text-transform: none;
+}
