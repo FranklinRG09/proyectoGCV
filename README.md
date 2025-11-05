@@ -20,7 +20,7 @@ Hay dos archivos de variables de entorno en dos versiones, una para producción 
 **-proyectoGCV/.env.prod | proyectoGCV/env.prod**
 - `.env(carpeta de backend)` 
 
-![](https://drive.google.com/file/d/1WJ9x0P0fL4O4g1LPVs-Un8Xw7lkbN1CN/view?usp=sharing)
+![](https://github.com/RubenIglesias1F20/Gestion-de-Turnos/blob/master/image%20(1).png)
 
 ## 3. Levantar entorno para Producción
 
