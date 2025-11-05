@@ -12,7 +12,7 @@
 
 ## 2. Variables de entorno
 
-Hay dos archivos de variables de entorno en dos versiones, una para producción y otra para probar en local.
+Hay dos archivos de variables de entorno en dos versiones, una para producción y otra para probar en local. Para poder encontrar los archivos de variables de entorno deben ir a la Page de plane con el titulo "002C | Variables de Entorno - GestorQ" ahi adentro encontraran el enlace para descargar las ENV necesarias; adicionalmente estan unas pequeñas instrucciones ilustrativas de donde deben de ir esas ENV aparte de las intrucciones que estan aqui
 
 **-proyectoGCV/.env.dev | proyectoGCV/env.dev**
 - `.env(raiz del proyecto)` 
@@ -20,6 +20,7 @@ Hay dos archivos de variables de entorno en dos versiones, una para producción 
 **-proyectoGCV/.env.prod | proyectoGCV/env.prod**
 - `.env(carpeta de backend)` 
 
+![](https://drive.google.com/file/d/1WJ9x0P0fL4O4g1LPVs-Un8Xw7lkbN1CN/view?usp=sharing)
 
 ## 3. Levantar entorno para Producción
 
