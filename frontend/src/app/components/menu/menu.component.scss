@@ -1,0 +1,14 @@
+.active {
+  background-color: #398c68 !important; /* Verde más oscuro */
+  font-weight: 600 !important;
+}
+
+/* asegurar que los ancestros tengan altura completa */
+html, body, app-root, .app-shell, .layout, mat-sidenav-container, mat-sidenav, mat-drawer {
+  height: 100%;
+}
+
+/* si usas un contenedor con clase layout, añadilo */
+.layout {
+  min-height: 100vh;
+}

@@ -1,0 +1,96 @@
+<div class="flex w-full h-[92vh] bg-gray-200 p-4 box-border">
+  <div class="flex flex-col flex-grow bg-[#F7F7F7] p-4 rounded-2xl shadow-md overflow-hidden">
+
+    <p class="text-center text-gray-800 font-extrabold text-3xl mb-4 flex-shrink-0">
+      Panel Administrativo
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-start gap-2 mb-4 flex-shrink-0">
+      <mat-form-field appearance="fill" class="w-full sm:w-48 text-sm">
+        <mat-label>Filtrar por motivo</mat-label>
+        <mat-select [(ngModel)]="filtroMotivo" (selectionChange)="aplicarFiltro()" class="text-sm">
+          <mat-option value="">Todos</mat-option>
+          <mat-option *ngFor="let motivo of motivosDisponibles" [value]="motivo">{{ motivo }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-full sm:w-48 text-sm">
+        <mat-label>Filtrar por estado</mat-label>
+        <mat-select [(ngModel)]="filtroEstado" (selectionChange)="aplicarFiltro()" class="text-sm">
+          <mat-option value="">Todos</mat-option>
+          <mat-option *ngFor="let estado of estados" [value]="estado">{{ formatoEstado(estado) }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="flex flex-col gap-6 overflow-y-auto flex-grow" style="min-height: 0;">
+      <ng-container *ngFor="let turno of turnosPaginados">
+        <div class="bg-[#E9EAEA] p-4 rounded-lg shadow-lg flex flex-col gap-3 transition-all hover:shadow-2xl flex-shrink-0">
+          <div class="text-base">
+            <p class="font-bold text-gray-800 text-base">{{ turno.nombres }} {{ turno.apellidos }}</p>
+            <p class="text-gray-700 text-sm">Documento: {{ turno.documento }}</p>
+            <p class="text-gray-700 text-sm">Motivo: {{ turno.motivo }}</p>
+            <p class="text-gray-700 text-sm">Estado: {{ formatoEstado(turno.estadoSeleccionado) }}</p>
+            <p *ngIf="turno.horaAtencion" class="text-gray-700 text-sm">
+              Hora Atención: {{ turno.horaAtencion | date:'HH:mm:ss' }}
+            </p>
+            <p *ngIf="turno.horaFin" class="text-gray-700 text-sm">
+              Hora Fin: {{ turno.horaFin | date:'HH:mm:ss' }}
+            </p>
+          </div>
+
+          <div class="flex gap-2 flex-wrap mt-2">
+            <button
+              *ngFor="let estado of estados"
+              (click)="seleccionarEstado(turno, estado)"
+              [ngClass]="{
+                'bg-[#4bab80] text-white text-sm': turno.estadoSeleccionado === estado,
+                'bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 text-sm': turno.estadoSeleccionado !== estado
+              }"
+              class="px-3 py-1 rounded font-semibold cursor-pointer transition-all"
+            >
+              {{ formatoEstado(estado) }}
+            </button>
+          </div>
+
+          <div class="flex justify-end mt-2">
+            <button
+              class="bg-[#4bab80] text-white text-sm px-4 py-1 rounded font-semibold cursor-pointer transition-all hover:bg-emerald-700"
+              [disabled]="turno.estadoSeleccionado === turno.estado"
+              (click)="cambiarEstado(turno)"
+            >
+              Cambiar
+            </button>
+          </div>
+        </div>
+      </ng-container>
+
+      <div *ngIf="turnosPaginados.length === 0" class="bg-[#E9EAEA] text-gray-500 italic text-center py-3 rounded-lg shadow-lg flex-shrink-0">
+        No hay turnos registrados
+      </div>
+    </div>
+
+    <div class="mt-4 flex justify-center items-center gap-4 flex-shrink-0">
+      <button
+        class="bg-[#4bab80] cursor-pointer hover:bg-emerald-800 text-white px-4 py-1 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+        (click)="paginaAnterior()"
+        [disabled]="paginaActual === 0"
+      >
+        Anterior
+      </button>
+
+      <span class="text-gray-700 font-semibold">
+        Página {{ paginaActual + 1 }} de {{ totalPaginas }}
+      </span>
+
+      <button
+        class="bg-[#4bab80] cursor-pointer hover:bg-emerald-800 text-white px-4 py-1 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+        (click)="siguientePagina()"
+        [disabled]="paginaActual + 1 >= totalPaginas"
+      >
+        Siguiente
+      </button>
+    </div>
+
+  </div>
+</div>

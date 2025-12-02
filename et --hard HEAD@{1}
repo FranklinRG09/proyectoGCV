@@ -1,0 +1,28 @@
+[33mbff2da6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mproduction[m[33m, [m[1;31morigin/production[m[33m)[m HEAD@{0}: reset: moving to origin/production
+[33maa252a1[m HEAD@{1}: commit: Creando login y protegiendo vistas.
+[33md23ea91[m HEAD@{2}: checkout: moving from dev to production
+[33mb8c0f82[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m, [m[1;32mfeature/turnos[m[33m, [m[1;32mdev[m[33m)[m HEAD@{3}: checkout: moving from production to dev
+[33md23ea91[m HEAD@{4}: reset: moving to HEAD
+[33md23ea91[m HEAD@{5}: checkout: moving from dev to production
+[33mb8c0f82[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m, [m[1;32mfeature/turnos[m[33m, [m[1;32mdev[m[33m)[m HEAD@{6}: reset: moving to HEAD
+[33mb8c0f82[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m, [m[1;32mfeature/turnos[m[33m, [m[1;32mdev[m[33m)[m HEAD@{7}: checkout: moving from feature/docker to dev
+[33mf6a2c54[m[33m ([m[1;31morigin/feature/docker[m[33m, [m[1;32mfeature/docker[m[33m)[m HEAD@{8}: commit: Subiendo la app a Docker con docker-compose
+[33m3998dce[m[33m ([m[1;31morigin/feature/panel-admin[m[33m, [m[1;32mfeature/panel-admin[m[33m)[m HEAD@{9}: checkout: moving from feature/panel-admin to feature/docker
+[33m3998dce[m[33m ([m[1;31morigin/feature/panel-admin[m[33m, [m[1;32mfeature/panel-admin[m[33m)[m HEAD@{10}: commit: Agregando panel administrativo con gestión de turnos y ocultando toolbar de solicitar turno
+[33m6a99015[m[33m ([m[1;31morigin/feature/ajuste-vista[m[33m, [m[1;32mfeature/ajuste-vista[m[33m)[m HEAD@{11}: checkout: moving from feature/ajuste-vista to feature/panel-admin
+[33m6a99015[m[33m ([m[1;31morigin/feature/ajuste-vista[m[33m, [m[1;32mfeature/ajuste-vista[m[33m)[m HEAD@{12}: commit: Separando y modificando las visats de solicitar turno y ver turnos
+[33m7d62f24[m[33m ([m[1;31morigin/feature/CRUD-turnos[m[33m, [m[1;32mfeature/CRUD-turnos[m[33m)[m HEAD@{13}: checkout: moving from feature/CRUD-turnos to feature/ajuste-vista
+[33m7d62f24[m[33m ([m[1;31morigin/feature/CRUD-turnos[m[33m, [m[1;32mfeature/CRUD-turnos[m[33m)[m HEAD@{14}: commit: Cambiando CRUD y agregando funcionalidad al frond para los turnos
+[33mb8c0f82[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m, [m[1;32mfeature/turnos[m[33m, [m[1;32mdev[m[33m)[m HEAD@{15}: checkout: moving from dev to feature/CRUD-turnos
+[33mb8c0f82[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m, [m[1;32mfeature/turnos[m[33m, [m[1;32mdev[m[33m)[m HEAD@{16}: checkout: moving from main to dev
+[33mb8c0f82[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m, [m[1;32mfeature/turnos[m[33m, [m[1;32mdev[m[33m)[m HEAD@{17}: pull origin main: Fast-forward
+[33m4b8fbec[m HEAD@{18}: checkout: moving from feature/turnos to main
+[33mb8c0f82[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m, [m[1;32mfeature/turnos[m[33m, [m[1;32mdev[m[33m)[m HEAD@{19}: reset: moving to HEAD
+[33mb8c0f82[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m, [m[1;32mfeature/turnos[m[33m, [m[1;32mdev[m[33m)[m HEAD@{20}: pull origin main: Fast-forward
+[33mab7d1b9[m[33m ([m[1;31morigin/feature/turnos[m[33m)[m HEAD@{21}: commit: Modificando vista para una presentación en espacio total de pantalla
+[33m5db78f3[m HEAD@{22}: commit: Agregando vista para solicitud de turno y generación de tickets con vista de turnos solicitados
+[33m4b8fbec[m HEAD@{23}: checkout: moving from main to feature/turnos
+[33m4b8fbec[m HEAD@{24}: reset: moving to HEAD
+[33m4b8fbec[m HEAD@{25}: commit: Creando CRUD de la aplicacion
+[33me56b52e[m HEAD@{26}: Branch: renamed refs/heads/master to refs/heads/main
+[33me56b52e[m HEAD@{28}: commit (initial): Commit inicial, agregango carpetas backend y frontend

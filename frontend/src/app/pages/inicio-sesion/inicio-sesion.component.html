@@ -1,0 +1,27 @@
+<div class="h-screen w-full flex flex-col items-center justify-center bg-gray-100">
+
+  <div class="bg-white shadow-xl rounded-2xl p-10 w-[90%] max-w-md text-center">
+
+    <div class="flex justify-center mb-6">
+      <span class="material-icons text-7xl text-emerald-700">
+        lock
+      </span>
+    </div>
+
+    <h1 class="text-3xl font-extrabold text-gray-800 mb-4">
+      Acceso restringido
+    </h1>
+
+    <p class="text-gray-600 text-lg mb-8">
+      Debes iniciar sesión para continuar.  
+      Por favor inicia sesión con tu cuenta.
+    </p>
+
+    <button
+      (click)="login()"
+      class="bg-[#4bab80] hover:bg-emerald-800 text-white font-semibold py-3 px-8 rounded-xl shadow-md transition-all cursor-pointer"
+    >
+      Iniciar sesión
+    </button>
+  </div>
+</div>

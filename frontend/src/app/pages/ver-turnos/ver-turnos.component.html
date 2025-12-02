@@ -1,25 +1,38 @@
-<mat-card-content class="card-principal">
-  <p>Turnos llamados:</p>
+<div
+  class="flex flex-col justify-between h-[86vh] bg-[#F7F7F7] p-6 rounded-2xl shadow-md box-border overflow-hidden"
+>
+  <!-- Título -->
+  <p class="text-gray-800 font-extrabold text-center mb-4 text-2xl flex-shrink-0">
+    Turnos llamados:
+  </p>
 
-  <!-- Turnos anteriores (cards grises) -->
-  <mat-card class="turno-one-card">
-    <mat-card-content>A05 - María López Sánchez</mat-card-content>
-  </mat-card>
+  <!-- Lista de turnos -->
+  <div class="flex flex-col flex-grow justify-start gap-4 overflow-y-auto pb-4">
+    <ng-container *ngFor="let turno of turnosLlamados">
+      <!-- Último turno destacado -->
+      <div
+        *ngIf="esUltimo(turno); else turnoNormal"
+        class="bg-[#4bab80] text-white text-3xl font-bold py-10 min-h-[120px] rounded-xl flex justify-center items-center shadow flex-shrink-0"
+      >
+        {{ turno.id | number:'2.0' }} - {{ turno.nombres }} {{ turno.apellidos }}
+      </div>
 
-  <mat-card class="turno-card">
-    <mat-card-content>A04 - Carlos Ramírez Gómez</mat-card-content>
-  </mat-card>
+      <!-- Turno normal -->
+      <ng-template #turnoNormal>
+        <div
+          class="bg-[#E9EAEA] text-gray-900 text-lg font-semibold py-5 rounded-xl flex justify-center items-center shadow-sm flex-shrink-0"
+        >
+          {{ turno.id | number:'2.0' }} - {{ turno.nombres }} {{ turno.apellidos }}
+        </div>
+      </ng-template>
+    </ng-container>
 
-  <mat-card class="turno-card">
-    <mat-card-content>A03 - Ana Torres Méndez</mat-card-content>
-  </mat-card>
-
-  <mat-card class="turno-card">
-    <mat-card-content>A02 - Luis Fernández Díaz</mat-card-content>
-  </mat-card>
-
-  <!-- Último turno destacado -->
-  <mat-card class="turno-card">
-    <mat-card-content>A01 - Juan Alonso Pérez Molina</mat-card-content>
-  </mat-card>
-</mat-card-content>
+    <!-- Sin turnos -->
+    <div
+      *ngIf="turnosLlamados.length === 0"
+      class="bg-[#E9EAEA] text-gray-500 italic text-center py-5 rounded-xl shadow-sm flex-shrink-0"
+    >
+      No hay turnos llamados
+    </div>
+  </div>
+</div>
