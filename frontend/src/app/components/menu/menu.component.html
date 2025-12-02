@@ -1,22 +1,35 @@
-<nav class="w-full bg-[#4bab80] text-white rounded-2xl p-4">
-  <!-- Título superior -->
+<nav class="w-full bg-[#4bab80] text-white rounded-2xl p-4 flex flex-col"
+     style="min-height: 160px;">
   <div class="text-center mb-6">
     <h1 class="text-2xl font-bold">proyectoGCV</h1>
   </div>
 
-  <!-- Lista de páginas -->
+  <!-- Lista de opciones-->
   <ul class="m-0 p-0 select-none">
     <li
-      *ngFor="let item of menuItems"
+      *ngFor="let item of menuItems$ | async"
       [routerLink]="item.route"
       routerLinkActive="active"
-      class="flex items-center px-4 py-3 cursor-pointer hover:bg-[#398c68] transition-all duration-200 rounded-lg mb-2"
       [routerLinkActiveOptions]="{ exact: true }"
+      class="flex items-center px-4 py-3 cursor-pointer hover:bg-[#398c68]
+             transition-all duration-200 rounded-lg mb-2"
     >
-      <span class="material-icons mr-3 text-[22px]">
-        {{ item.icon }}
-      </span>
+      <span class="material-icons mr-3 text-[22px]">{{ item.icon }}</span>
       <span class="text-base font-medium">{{ item.label }}</span>
     </li>
   </ul>
+
+
+  <div class="my-4" style="height: 29rem;"></div>
+
+  <div class="pt-4 border-t border-white/20">
+    <button
+      (click)="logout()"
+      class="w-full flex items-center justify-center gap-2 bg-white text-[#218a6a]
+             py-3 rounded-lg font-semibold hover:opacity-90 transition cursor-pointer"
+    >
+      <span class="material-icons">logout</span>
+      Cerrar sesión
+    </button>
+  </div>
 </nav>

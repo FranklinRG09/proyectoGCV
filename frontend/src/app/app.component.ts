@@ -19,13 +19,14 @@ import { filter } from 'rxjs';
 export class AppComponent {
   isSidenavOpen = true;
   esRutaSolicitarTurno = false;
+  esRutaInicioSesion = false;
 
   constructor(private router: Router) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        // Si la ruta actual es /solicitar-turno, ocultamos toolbar y sidenav
-        this.esRutaSolicitarTurno = event.urlAfterRedirects === '/solicitar-turno';
+        //ocultar toolbar y sidenav
+        this.esRutaInicioSesion = event.urlAfterRedirects === '/inicio-sesion';
       });
   }
   

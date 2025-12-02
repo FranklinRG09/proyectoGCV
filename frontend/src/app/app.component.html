@@ -1,13 +1,11 @@
 <!-- Toolbar y sidenav solo si NO estamos en /solicitar-turno -->
-<ng-container *ngIf="!esRutaSolicitarTurno">
+<ng-container *ngIf="!esRutaSolicitarTurno && !esRutaInicioSesion">
   <mat-toolbar color="primary" class="fixed-toolbar">
     <button mat-icon-button class="icon" (click)="toggleMenu()">
       <mat-icon>menu</mat-icon>
     </button>
 
     <span class="toolbar-title">Gestor de Colas Virtuales</span>
-
-    <button mat-flat-button class="boton-sesion">Iniciar Sesión</button>
   </mat-toolbar>
 
   <mat-sidenav-container class="main-container">
@@ -21,7 +19,7 @@
   </mat-sidenav-container>
 </ng-container>
 
-<!-- Solo el contenido sin toolbar ni sidenav para /solicitar-turno -->
-<ng-container *ngIf="esRutaSolicitarTurno">
+<!-- Solo el contenido sin toolbar-->
+<ng-container *ngIf="esRutaSolicitarTurno || esRutaInicioSesion">
   <router-outlet></router-outlet>
 </ng-container>
