@@ -1,0 +1,69 @@
+<div class="flex w-full h-[92vh] bg-gray-200 p-4 box-border">
+  <div class="flex flex-col flex-grow bg-[#F7F7F7] p-4 rounded-2xl shadow-md overflow-hidden">
+
+    <p class="text-center text-gray-800 font-extrabold text-3xl mb-4 flex-shrink-0">
+      Historial de Turnos Finalizados
+    </p>
+
+    <mat-card class="mb-4 flex-grow">
+      <div class="overflow-auto">
+        <table mat-table [dataSource]="dataSource" matSort class="min-w-full">
+
+          <!-- Nombres -->
+          <ng-container matColumnDef="nombres">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+            <td mat-cell *matCellDef="let turno">{{ turno.nombres }} {{ turno.apellidos }}</td>
+          </ng-container>
+
+          <!-- Documento -->
+          <ng-container matColumnDef="documento">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Documento</th>
+            <td mat-cell *matCellDef="let turno">{{ turno.documento }}</td>
+          </ng-container>
+
+          <!-- Motivo -->
+          <ng-container matColumnDef="motivo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Motivo</th>
+            <td mat-cell *matCellDef="let turno">{{ turno.motivo }}</td>
+          </ng-container>
+
+          <!-- Hora Atención -->
+          <ng-container matColumnDef="horaAtencion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Hora Atención</th>
+            <td mat-cell *matCellDef="let turno">{{ formatoHora(turno.horaAtencion) }}</td>
+          </ng-container>
+
+          <!-- Hora Fin -->
+          <ng-container matColumnDef="horaFin">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Hora Fin</th>
+            <td mat-cell *matCellDef="let turno">{{ formatoHora(turno.horaFin) }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+
+      <div *ngIf="turnosFinalizados.length === 0" class="text-center text-gray-500 italic py-4">
+        No hay turnos finalizados.
+      </div>
+
+      <!-- PAGINADOR con estilo personalizado (10 en 10) -->
+      <div class="flex justify-center items-center gap-4 mt-4 flex-shrink-0">
+        <button (click)="paginaAnterior()" [disabled]="paginaActual === 1"
+          class="bg-[#4bab80] hover:bg-emerald-800 text-white px-4 py-1 rounded disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer">
+          Anterior
+        </button>
+
+        <span class="text-gray-700 font-semibold">
+          Página {{ paginaActual }} de {{ totalPaginas }}
+        </span>
+
+        <button (click)="siguientePagina()" [disabled]="paginaActual >= totalPaginas"
+          class="bg-[#4bab80] hover:bg-emerald-800 text-white px-4 py-1 rounded disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer">
+          Siguiente
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</div>

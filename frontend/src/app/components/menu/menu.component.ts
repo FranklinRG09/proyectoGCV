@@ -29,8 +29,9 @@ export class MenuComponent {
 
   private readonly ALL_MENU: MenuItem[] = [
     { icon: 'person_add', label: 'Solicitar turno', route: '/solicitar-turno', requiredRole: 'Cliente' },
-    { icon: 'event_note', label: 'Ver turnos', route: '/turnos' },
-    { icon: 'admin_panel_settings', label: 'Administración', route: '/admin-turnos', requiredRole: 'Empleado' }
+    { icon: 'event_note', label: 'Ver turnos', route: '/turnos'},
+    { icon: 'admin_panel_settings', label: 'Administración', route: '/admin-turnos', requiredRole: 'Empleado' },
+    { icon: 'history', label: 'Registros', route: '/registros', requiredRole: 'Empleado' }
   ];
 
   // helper que extrae roles del user, devuelve arreglo en minúsculas

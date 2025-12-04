@@ -14,11 +14,15 @@ import { Subscription } from 'rxjs';
 })
 export class SiguientesTurnosComponent implements OnInit, OnDestroy {
 
-  siguientesTurnos: Turno[] = [];
+  // lista completa recibida del servicio (filtrada por estado)
+  allSiguientesTurnos: Turno[] = [];
+
   personasEsperando = 0;
-  maxTurnos = 5;
+
+  // paginación
   paginaActual = 1;
-  turnosPorPagina = 5;
+  turnosPorPagina = 6;
+
   private sub!: Subscription;
 
   constructor(private turnosService: TurnosService) {}
@@ -32,27 +36,41 @@ export class SiguientesTurnosComponent implements OnInit, OnDestroy {
     if (this.sub) this.sub.unsubscribe();
   }
 
+  
+
   cargarTurnos() {
     this.turnosService.obtenerTurnosPorEstado('EN_ESPERA').subscribe({
       next: (data) => {
-        const ordenados = data.sort((a, b) => a.id - b.id);
-        this.siguientesTurnos = ordenados;
-        this.personasEsperando = data.length;
+        // ordenar de menor a mayor id (cola)
+        const ordenados = (data ?? []).sort((a, b) => a.id - b.id);
+        this.allSiguientesTurnos = ordenados;
+        this.personasEsperando = ordenados.length;
+
+        // resetear paginación a página 1 y actualizar slice visible
+        this.paginaActual = 1;
       },
       error: (err) => console.error('Error al obtener siguientes turnos:', err)
     });
   }
 
-  get turnosPaginados() {
+  // getter que devuelve el slice paginado que la plantilla iterará
+  get turnosPaginados(): Turno[] {
     const inicio = (this.paginaActual - 1) * this.turnosPorPagina;
-    return this.siguientesTurnos.slice(inicio, inicio + this.turnosPorPagina);
+    return this.allSiguientesTurnos.slice(inicio, inicio + this.turnosPorPagina);
   }
 
   siguientePagina() {
-    if (this.paginaActual * this.turnosPorPagina < this.siguientesTurnos.length) this.paginaActual++;
+    if (this.paginaActual * this.turnosPorPagina < this.allSiguientesTurnos.length) {
+      this.paginaActual++;
+    }
   }
 
   paginaAnterior() {
     if (this.paginaActual > 1) this.paginaActual--;
+  }
+
+  // Total de páginas para mostrar en el paginador
+  get totalPaginas(): number {
+    return Math.max(1, Math.ceil(this.allSiguientesTurnos.length / this.turnosPorPagina));
   }
 }

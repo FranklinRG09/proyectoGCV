@@ -113,12 +113,24 @@ export class AdminTurnosComponent implements OnInit, OnDestroy {
     this.turnoService.cambiarEstado(turno.documento, turno.estadoSeleccionado)
       .subscribe({
         next: updated => {
+          // Actualizar propiedades del turno localmente
           turno.estado = updated.estado;
           turno.horaAtencion = updated.horaAtencion;
           turno.horaFin = updated.horaFin;
 
-          // Fuerza actualización de la vista
-          this.actualizarPaginacion();
+          // Si el turno fue finalizado, eliminarlo del array principal
+          if (updated.estado === 'FINALIZADO') {
+            this.turnos = this.turnos.filter(t => t.documento !== turno.documento);
+          }
+
+          // Reaplicar filtros y paginación para que la vista se actualice correctamente
+          this.aplicarFiltro();
+
+          // Ajustar página actual si quedó fuera de rango (p. ej. eliminaste el último elemento de la última página)
+          if (this.paginaActual >= this.totalPaginas && this.totalPaginas > 0) {
+            this.paginaActual = Math.max(0, this.totalPaginas - 1);
+            this.actualizarPaginacion();
+          }
 
           this.snackBar.open(
             `Estado de ${turno.nombres} actualizado a ${updated.estado}`,
@@ -136,13 +148,14 @@ export class AdminTurnosComponent implements OnInit, OnDestroy {
         }
       });
   }
-
-  // Formatea estados legibles
+  
+    // Formatea estados legibles
   formatoEstado(estado?: string): string {
     if (!estado) return '';
     switch (estado) {
       case 'EN_ESPERA': return 'EN ESPERA';
       case 'EN_LLAMADA': return 'EN LLAMADA';
+      case 'EN_PROCESO': return 'EN PROCESO';
       default: return estado;
     }
   }

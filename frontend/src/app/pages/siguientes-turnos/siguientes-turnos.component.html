@@ -19,13 +19,21 @@
     Siguientes turnos:
   </p>
 
-  <!-- Lista de turnos sin scroll -->
-  <div class="flex flex-col justify-start gap-4 pb-4">
+  <!-- Contenedor con scroll (igual que Turnos llamados) -->
+  <div class="flex-grow overflow-y-auto pb-4" style="min-height: 0;">
     <ng-container *ngFor="let turno of turnosPaginados">
       <div
-        class="bg-[#E9EAEA] font-bold text-lg text-gray-900 text-center py-5 rounded-xl shadow-sm"
+        class="bg-[#E9EAEA] font-bold text-lg text-gray-900 text-center py-5 rounded-xl shadow-sm mb-4"
       >
-        {{ turno.id | number:'2.0' }} - {{ turno.nombres }} {{ turno.apellidos }}
+        <!-- Nombre -->
+        <div class="text-lg">
+          {{ turno.id | number:'2.0' }} - {{ turno.nombres }} {{ turno.apellidos }}
+        </div>
+
+        <!-- Motivo -->
+        <div class="mt-1 text-sm font-medium text-gray-600">
+          {{ turno.motivo }}
+        </div>
       </div>
     </ng-container>
 
@@ -38,26 +46,26 @@
     </div>
   </div>
 
-  <!-- Paginador -->
+  <!-- PAGINADOR (fijo abajo) -->
   <div
     class="flex justify-center items-center gap-6 mt-4 flex-shrink-0 border-t border-gray-200 pt-4"
   >
     <button
       (click)="paginaAnterior()"
       [disabled]="paginaActual === 1"
-      class="bg-[#4bab80] hover:bg-emerald-800 text-white px-6 py-2 rounded-lg font-semibold disabled:opacity-50"
+      class="bg-[#4bab80] hover:bg-emerald-800 text-white px-6 py-2 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
     >
       Anterior
     </button>
 
     <span class="text-gray-700 font-semibold text-lg">
-      Página {{ paginaActual }}
+      Página {{ paginaActual }} de {{ totalPaginas }}
     </span>
 
     <button
       (click)="siguientePagina()"
-      [disabled]="paginaActual * turnosPorPagina >= siguientesTurnos.length"
-      class="bg-[#4bab80] hover:bg-emerald-800 text-white px-6 py-2 rounded-lg font-semibold disabled:opacity-50"
+      [disabled]="paginaActual >= totalPaginas"
+      class="bg-[#4bab80] hover:bg-emerald-800 text-white px-6 py-2 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
     >
       Siguiente
     </button>
