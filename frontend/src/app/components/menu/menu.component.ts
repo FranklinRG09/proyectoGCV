@@ -1,4 +1,3 @@
-// src/app/components/menu/menu.component.ts
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
