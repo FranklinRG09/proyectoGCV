@@ -18,7 +18,7 @@ import com.proyectoGCV.service.TicketService;
 
 @RestController
 @RequestMapping("/api/turnos")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://proyectogcv-rred.onrender.com")
 public class TicketController {
 
     private final TicketService service;
